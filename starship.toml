@@ -1,0 +1,11 @@
+[memory_usage]
+disabled = false
+show_swap = false
+threshold = 0
+
+[time]
+disabled = false
+
+[usename]
+show_always = true
+

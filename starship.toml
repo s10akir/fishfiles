@@ -6,6 +6,6 @@ threshold = 0
 [time]
 disabled = false
 
-[usename]
+[username]
 show_always = true
 

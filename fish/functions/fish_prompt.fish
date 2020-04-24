@@ -30,5 +30,17 @@ function fish_prompt --description 'Write out the prompt'
 
     echo -n '➤ '
     set_color normal
+
+    set -l project
+
+    if echo (pwd) | grep -qEi "^/Users/$USER/.ghq/"
+      set  project (echo (pwd) | sed "s#^/Users/$USER/.ghq/\\([^/]*\\).*#\\1#")
+    else if echo (pwd) | grep -qEi "^/Users/$USER/Working/"
+      set  project (echo (pwd) | sed "s#^/Users/$USER/Working/\\([^/]*\\).*#\\1#")
+    else
+      set  project "Terminal"
+    end
+
+    wakatime --write --plugin "fish-wakatime/0.0.1" --entity-type app --project "$project" --entity (echo $history[1] | cut -d ' ' -f1) 2>&1 > /dev/null&
 end
 
